@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 
 
@@ -19,3 +19,7 @@ def about(request):
         'about.html',
         context={'tags': tags},
     )
+
+
+def python_42(request):
+    return redirect('article', tags='python', article_id=42)
