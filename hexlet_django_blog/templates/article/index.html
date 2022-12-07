@@ -1,19 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Эксперименты с Django на Хекслете{% endblock %}
-
 {% block content %}
-<h1>{{ title }}</h1>
-{% for a in articles %}
-    <p>{{ a.name }}</p>
-    <p>{{ a.body }}</p>
-{% endfor %}
-{% if article_id is not None%}
-    <p>
-        Статья номер {{ article_id }}.
-    </p>
-    <p>
-        Тег {{ tags }}.
-    </p>
-{% endif %}
+    <h1>Список статей</h1>
+    {% for article in articles %}
+        <h3>{{ article.name }}</h3>
+        <div>{{ article.body|slice:":200" }}...</div>
+    {% endfor %}
 {% endblock %}
