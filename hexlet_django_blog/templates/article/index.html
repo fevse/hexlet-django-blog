@@ -4,6 +4,10 @@
 
 {% block content %}
 <h1>{{ title }}</h1>
+{% for a in articles %}
+    <p>{{ a.name }}</p>
+    <p>{{ a.body }}</p>
+{% endfor %}
 {% if article_id is not None%}
     <p>
         Статья номер {{ article_id }}.
