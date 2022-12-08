@@ -7,11 +7,19 @@
 <body>
 <div id="sidebar">
     {% block sidebar %}
-        <ul>
-            <li><a href="/">Главная</a></li>
-            <li><a href="/article/">Статьи</a></li>
-            <li><a href="/about">Об этом блоге</a></li>
-        </ul>
+        <table>
+            <tr>
+                <td><h3><a href="/">Главная</a></h3></td>
+                <td><h3><a href="/article">Статьи</a></h3></td>
+                <td><h3><a href="/about">Об этом блоге</a></h3></td>
+                <td>
+                    <form action="/article" method="get">
+                        <input type="search" name="q" value="" />
+                        <input type="submit" value="Поиск" />
+                    </form>
+                </td>
+            </tr>
+        </table>
     {% endblock %}
 </div>
 <div id="content">
