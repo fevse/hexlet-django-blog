@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from .models import Article
 from django.db.models import Q
+from .forms import ArticleForm
 
 
 
@@ -12,7 +13,7 @@ class IndexView(View):
         if query:
             articles = Article.objects.filter(Q(name__icontains=query))
         else:
-            articles = Article.objects.all()[:5]
+            articles = Article.objects.all()
         return render(request, 'article/index.html', context={
             'articles': articles,
         })
@@ -25,3 +26,17 @@ class ArticleView(View):
         return render(request, 'article/show.html', context={
             'article': article,
         })
+
+
+class ArticleFormCreateView(View):
+
+    def get(self, request, *args, **kwargs):
+        form = ArticleForm()
+        return render(request, 'article/create.html', {'form': form})
+    
+    def post(self, request, *args, **kwargs):
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('articles_index') 
+        return render(request, 'article/create.html', {'form': form})
