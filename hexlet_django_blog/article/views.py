@@ -57,5 +57,5 @@ class ArticleFormUpdateView(View):
         if form.is_valid():
             form.save()
             return redirect('articles_index')
-
+        
         return render(request, 'article/update.html', {'form': form, 'article_id':article_id})
