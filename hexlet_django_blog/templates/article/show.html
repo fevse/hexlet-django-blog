@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <a href="./edit">Редактировать статью</a>
+    <p><a href="{% url 'article_update' id=article.id %}">Редактировать статью</a></p>
     <h1>{{ article.name }}</h1>
     <div>{{ article.body }}</div>
+    <p><a href="{% url 'article_destroy' id=article.id %}">Удалить статью</a></p>
 {% endblock %}
