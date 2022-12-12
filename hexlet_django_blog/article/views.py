@@ -63,7 +63,7 @@ class ArticleFormUpdateView(View):
 
 class ArticleFormDestroyView(View):
 
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         article_id = kwargs.get('id')
         article = Article.objects.get(id=article_id)
         if article:
